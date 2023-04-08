@@ -1,5 +1,8 @@
 {
-  "name": "test-react-components-library",
+  "name": "@SerhiiNosenko/test-react-components-library",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/SerhiiNosenko"
+  },
   "version": "1.0.0",
   "description": "React components library",
   "type": "module",
