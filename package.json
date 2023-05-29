@@ -3,11 +3,11 @@
   "publishConfig": {
     "@serhiinosenko:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "React components library",
   "type": "module",
   "scripts": {
-    "rollup": "rollup -c",
+    "rollup": "rollup -c --bundleConfigAsCjs",
     "test": "jest --watch=false",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

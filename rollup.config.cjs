@@ -1,7 +1,6 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import terser from "@rollup/plugin-terser";
@@ -9,6 +8,9 @@ import alias from "rollup-plugin-alias";
 import url from "rollup-plugin-url";
 
 import packageJson from "./package.json" assert { type: "json" };
+
+// Use the require statement with the .default property to import dts
+const dts = require("rollup-plugin-dts").default;
 
 export default [
   {
@@ -37,13 +39,19 @@ export default [
         limit: Infinity,
         // fileName: "[name][extname]", // Preserve the original file extension
       }),
-      terser(),
+      terser({
+        format: {
+          comments: false,
+        },
+        include: /^((?!TAppIcon).)*$/, // Exclude files or code containing 'TAppIcon'
+      }),
       alias({
         entries: [
-          { find: "@/", replacement: "./src" },
-          { find: "fonts", replacement: "./src/fonts" },
+          { find: "@/", replacement: `${__dirname}/src` },
+          { find: "fonts", replacement: `${__dirname}/src/fonts` },
         ],
       }),
+      dts(),
     ],
     external: ["react", "@mui/material"],
   },
