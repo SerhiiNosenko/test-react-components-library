@@ -22,9 +22,7 @@ import { AppSelectedSvg } from "@/components/Svg-Icons";
 import { alpha } from "@mui/material/styles";
 import { FONT_FACES } from "@/theme/variables";
 
-type TAppIcon = "UbersuggestThumbSvg" | "AIWriterThumbSvg";
-
-interface IAppOption {
+interface IOption {
   /**
    * App title
    */
@@ -40,7 +38,7 @@ interface IAppOption {
   /**
    * App icon name
    */
-  icon: TAppIcon;
+  icon: string;
   /**
    * App tick color
    */
@@ -55,14 +53,14 @@ export interface IAppSwitcher {
   /**
    * Apps configuration
    */
-  appOptions: IAppOption[];
+  appOptions: IOption[];
   /**
    * Hide default app from options
    */
   hideSelected?: boolean;
 }
 
-const getIconComponent = (iconName: TAppIcon) => {
+const getIconComponent = (iconName: string) => {
   switch (iconName) {
     case "UbersuggestThumbSvg":
       return <UbersuggestThumbSvg />;
@@ -85,7 +83,7 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
   const anchorRef = useRef<HTMLButtonElement>(null);
 
   const activeApp = useMemo(
-    () => appOptions.find((app: IAppOption) => app.default),
+    () => appOptions.find((app: IOption) => app.default),
     []
   );
 

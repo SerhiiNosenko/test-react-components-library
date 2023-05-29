@@ -7,7 +7,7 @@
   "description": "React components library",
   "type": "module",
   "scripts": {
-    "rollup": "rollup -c --bundleConfigAsCjs",
+    "rollup": "rollup -c",
     "test": "jest --watch=false",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
