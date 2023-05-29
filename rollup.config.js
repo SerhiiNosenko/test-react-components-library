@@ -34,11 +34,15 @@ export default [
       url({
         limit: 0, // Always emit files as separate assets
         include: ["**/*.eot", "**/*.woff", "**/*.woff2", "**/*.ttf"], // Include font files
-        fileName: "[name][extname]", // Preserve the original file extension
+        limit: Infinity,
+        // fileName: "[name][extname]", // Preserve the original file extension
       }),
       terser(),
       alias({
-        entries: [{ find: "@/", replacement: "./src" }],
+        entries: [
+          { find: "@/", replacement: "./src" },
+          { find: "fonts", replacement: "./src/fonts" },
+        ],
       }),
     ],
     external: ["react", "@mui/material"],

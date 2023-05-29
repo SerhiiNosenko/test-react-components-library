@@ -3,7 +3,7 @@
   "publishConfig": {
     "@serhiinosenko:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "React components library",
   "type": "module",
   "scripts": {
