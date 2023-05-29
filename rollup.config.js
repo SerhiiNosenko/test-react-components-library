@@ -6,6 +6,7 @@ import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import terser from "@rollup/plugin-terser";
 import alias from "rollup-plugin-alias";
+import url from "rollup-plugin-url";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -30,9 +31,14 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
+      url({
+        limit: 0, // Always emit files as separate assets
+        include: ["**/*.eot", "**/*.woff", "**/*.woff2", "**/*.ttf"], // Include font files
+        fileName: "[name][extname]", // Preserve the original file extension
+      }),
       terser(),
       alias({
-        entries: [{ find: "@", replacement: "path/to/your/src/folder" }],
+        entries: [{ find: "@/", replacement: "./src" }],
       }),
     ],
     external: ["react", "@mui/material"],
