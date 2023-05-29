@@ -5,6 +5,7 @@ import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import terser from "@rollup/plugin-terser";
+import alias from "rollup-plugin-alias";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -30,7 +31,11 @@ export default [
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
       terser(),
+      alias({
+        entries: [{ find: "@", replacement: "path/to/your/src/folder" }],
+      }),
     ],
+    external: ["react", "@mui/material"],
   },
   {
     input: "dist/esm/types/index.d.ts",
