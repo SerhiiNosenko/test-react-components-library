@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    },
     "target": "es5",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "esnext",
     "declaration": true,
     "declarationDir": "types",
@@ -14,5 +20,14 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-  }
+    "types": [
+      "node",
+      "jest",
+      "@types/testing-library__jest-dom"
+    ]
+  },
+  "include": [
+    "src",
+    "src/fonts",
+  ],
 }
