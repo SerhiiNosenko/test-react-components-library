@@ -1,9 +1,9 @@
 import { GEOMANIST_FONTS } from "./consts";
 
-import GeomanistExtraLightEot from "@/fonts/geomanist/Geomanist-ExtraLight.eot";
-import GeomanistExtraLightTtf from "@/fonts/geomanist/Geomanist-ExtraLight.ttf";
-import GeomanistExtraLightWoff from "@/fonts/geomanist/Geomanist-ExtraLight.woff";
-import GeomanistExtraLightWoff2 from "@/fonts/geomanist/Geomanist-ExtraLight.woff2";
+import GeomanistExtraLightEot from "../../../../fonts/geomanist/Geomanist-ExtraLight.eot";
+import GeomanistExtraLightTtf from "../../../../fonts/geomanist/Geomanist-ExtraLight.ttf";
+import GeomanistExtraLightWoff from "../../../../fonts/geomanist/Geomanist-ExtraLight.woff";
+import GeomanistExtraLightWoff2 from "../../../../fonts/geomanist/Geomanist-ExtraLight.woff2";
 
 export const geomanistExtraLight = `
   @font-face {

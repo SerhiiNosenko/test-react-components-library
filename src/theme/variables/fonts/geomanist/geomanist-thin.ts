@@ -1,9 +1,9 @@
 import { GEOMANIST_FONTS } from "./consts";
 
-import GeomanistThinEot from "@/fonts/geomanist/Geomanist-Thin.eot";
-import GeomanistThinTtf from "@/fonts/geomanist/Geomanist-Thin.ttf";
-import GeomanistThinWoff from "@/fonts/geomanist/Geomanist-Thin.woff";
-import GeomanistThinWoff2 from "@/fonts/geomanist/Geomanist-Thin.woff2";
+import GeomanistThinEot from "../../../../fonts/geomanist/Geomanist-Thin.eot";
+import GeomanistThinTtf from "../../../../fonts/geomanist/Geomanist-Thin.ttf";
+import GeomanistThinWoff from "../../../../fonts/geomanist/Geomanist-Thin.woff";
+import GeomanistThinWoff2 from "../../../../fonts/geomanist/Geomanist-Thin.woff2";
 
 export const geomanistThin = `
 @font-face {

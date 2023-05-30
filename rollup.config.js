@@ -7,7 +7,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import terser from "@rollup/plugin-terser";
 import url from "rollup-plugin-url";
 import alias from "rollup-plugin-alias";
-import CopyPlugin from "copy-webpack-plugin";
+import copy from "rollup-plugin-copy";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -42,21 +42,18 @@ export default [
           comments: false,
         },
       }),
-      new CopyPlugin({
-        patterns: [
-          {
-            from: "src/**/*",
-            to: "dest/",
-            force: true,
-          },
+      copy({
+        targets: [
+          { src: "src/fonts", dest: "dist/cjs/types" },
+          { src: "src/fonts", dest: "dist/esm/types" },
         ],
       }),
-      alias({
-        entries: [
-          { find: "@/", replacement: `src` },
-          { find: "fonts", replacement: `src/fonts` },
-        ],
-      }),
+      // alias({
+      //   entries: [
+      //     { find: "@/", replacement: `dist` },
+      //     { find: "fonts", replacement: `src/fonts` },
+      //   ],
+      // }),
     ],
   },
   {
