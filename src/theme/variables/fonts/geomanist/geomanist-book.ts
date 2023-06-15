@@ -1,9 +1,9 @@
 import { GEOMANIST_FONTS } from "./consts";
 
-import GeomanistBookEot from "../../../../fonts/geomanist/Geomanist-Book.eot";
-import GeomanistBookTtf from "../../../../fonts/geomanist/Geomanist-Book.ttf";
-import GeomanistBookWoff from "../../../../fonts/geomanist/Geomanist-Book.woff";
-import GeomanistBookWoff2 from "../../../../fonts/geomanist/Geomanist-Book.woff2";
+import GeomanistBookEot from "../../../../assets/fonts/geomanist/Geomanist-Book.eot";
+import GeomanistBookTtf from "../../../../assets/fonts/geomanist/Geomanist-Book.ttf";
+import GeomanistBookWoff from "../../../../assets/fonts/geomanist/Geomanist-Book.woff";
+import GeomanistBookWoff2 from "../../../../assets/fonts/geomanist/Geomanist-Book.woff2";
 
 export const geomanistBook = `
 @font-face {

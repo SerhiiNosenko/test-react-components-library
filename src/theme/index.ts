@@ -4,9 +4,11 @@ import breakpoints from "./breakpoints";
 import typography from "./typography";
 import components from "./components";
 
-export const lightTheme = createTheme({
+export const theme = {
   typography,
   palette,
   breakpoints,
   components,
-}) as ThemeOptions;
+};
+
+export const lightTheme = createTheme(theme) as ThemeOptions;

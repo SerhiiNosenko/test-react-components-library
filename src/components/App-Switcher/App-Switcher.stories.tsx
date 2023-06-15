@@ -1,8 +1,9 @@
 import React from "react";
-import { Box } from "@mui/material";
-import AppSwitcher, { IAppSwitcher } from "./App-Switcher";
 import { Meta } from "@storybook/react";
+import { Box } from "@mui/material";
+import AppSwitcher from "./App-Switcher";
 import { DEFAULT_PROPS } from "./mocks";
+import { IAppSwitcher } from "./App-Switcher.types";
 
 const meta: Meta<typeof AppSwitcher> = {
   title: "Components/AppSwitcher",

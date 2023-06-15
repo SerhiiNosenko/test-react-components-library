@@ -1,4 +1,4 @@
-import { fontFaces } from "@/theme/variables/fonts";
+import { fontFaces } from "../variables/fonts";
 import MuiButton from "./mui-button";
 import MuiCard from "./mui-card";
 

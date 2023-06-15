@@ -1,7 +1,9 @@
+import React from "react";
 import { render } from "@testing-library/react";
-import { ThemeProvider } from "@mui/material/styles";
-import "@testing-library/jest-dom/extend-expect";
+import { Theme, createTheme } from "@mui/material/styles";
+import ThemeInheritor from "../../Theme-Inheritor";
 import { AppSelectedSvg } from ".";
+import "@testing-library/jest-dom/extend-expect";
 
 const theme = {
   palette: {
@@ -12,11 +14,11 @@ const theme = {
   },
 };
 
-test("renders AppSelectedSvg with default props", () => {
+test("should render AppSelectedSvg with default fill and stroke", () => {
   const { getByTestId } = render(
-    <ThemeProvider theme={theme}>
+    <ThemeInheritor theme={createTheme(theme) as Theme}>
       <AppSelectedSvg />
-    </ThemeProvider>
+    </ThemeInheritor>
   );
   const svgElement = getByTestId("app-selected-svg");
   expect(svgElement).toBeInTheDocument();
@@ -35,14 +37,14 @@ test("renders AppSelectedSvg with default props", () => {
   );
 });
 
-test("renders AppSelectedSvg with fill and stroke props", () => {
+test("should render AppSelectedSvg with custom fill and secondary color", () => {
   const fill = "#E53435";
   const secondaryColor = "#4285F4";
 
   const { getByTestId } = render(
-    <ThemeProvider theme={theme}>
+    <ThemeInheritor theme={createTheme(theme) as Theme}>
       <AppSelectedSvg fill={fill} secondaryColor={secondaryColor} />
-    </ThemeProvider>
+    </ThemeInheritor>
   );
   const svgElement = getByTestId("app-selected-svg");
   expect(svgElement).toBeInTheDocument();

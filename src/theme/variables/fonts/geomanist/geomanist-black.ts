@@ -1,9 +1,9 @@
 import { GEOMANIST_FONTS } from "./consts";
 
-import GeomanistBlackEot from "../../../../fonts/geomanist/Geomanist-Black.eot";
-import GeomanistBlackTtf from "../../../../fonts/geomanist/Geomanist-Black.ttf";
-import GeomanistBlackWoff from "../../../../fonts/geomanist/Geomanist-Black.woff";
-import GeomanistBlackWoff2 from "../../../../fonts/geomanist/Geomanist-Black.woff2";
+import GeomanistBlackEot from "../../../../assets/fonts/geomanist/Geomanist-Black.eot";
+import GeomanistBlackTtf from "../../../../assets/fonts/geomanist/Geomanist-Black.ttf";
+import GeomanistBlackWoff from "../../../../assets/fonts/geomanist/Geomanist-Black.woff";
+import GeomanistBlackWoff2 from "../../../../assets/fonts/geomanist/Geomanist-Black.woff2";
 
 export const geomanistBlack = `
   @font-face {

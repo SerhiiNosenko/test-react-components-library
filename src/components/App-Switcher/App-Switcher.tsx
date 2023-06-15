@@ -10,57 +10,24 @@ import {
   Box,
   Stack,
   Typography,
-  Button,
   Link,
   useTheme,
 } from "@mui/material";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 // SVG-icons
 import { UbersuggestThumbSvg, AIWriterThumbSvg } from "@/components/Svg-Icons";
 import { AppSelectedSvg } from "@/components/Svg-Icons";
-// MUI-stylel
-import { alpha } from "@mui/material/styles";
+// Variables
 import { FONT_FACES } from "@/theme/variables";
+// Styled
+import {
+  AppSwitcherButtomCustomized,
+  KeyboardArrowRightIconCustomized,
+} from "./App-Switcher.styled";
+// Types
+import { IAppSwitcher, IOption, TAppIcon } from "./App-Switcher.types";
 
-interface IOption {
-  /**
-   * App title
-   */
-  title: string;
-  /**
-   * App description
-   */
-  description: string;
-  /**
-   * App url
-   */
-  url: string;
-  /**
-   * App icon name
-   */
-  icon: string;
-  /**
-   * App tick color
-   */
-  color: string;
-  /**
-   * Default app
-   */
-  default?: boolean;
-}
-
-export interface IAppSwitcher {
-  /**
-   * Apps configuration
-   */
-  appOptions: IOption[];
-  /**
-   * Hide default app from options
-   */
-  hideSelected?: boolean;
-}
-
-const getIconComponent = (iconName: string) => {
+// Need to add a icon for each supported App
+const getIconComponent = (iconName: TAppIcon) => {
   switch (iconName) {
     case "UbersuggestThumbSvg":
       return <UbersuggestThumbSvg />;
@@ -79,9 +46,7 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
   } = useTheme();
 
   const [open, setOpen] = useState(false);
-
   const anchorRef = useRef<HTMLButtonElement>(null);
-
   const activeApp = useMemo(
     () => appOptions.find((app: IOption) => app.default),
     []
@@ -118,29 +83,11 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
 
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
-      <Button
+      <AppSwitcherButtomCustomized
         data-testid="app-switcher"
         ref={anchorRef}
-        sx={{
-          color: darkGray.main,
-          background: gray[10],
-          textTransform: "none",
-          justifyContent: "space-between",
-          minWidth: 228,
-          py: 0.5,
-          px: 1.5,
-        }}
         startIcon={activeApp?.icon ? getIconComponent(activeApp?.icon) : null}
-        endIcon={
-          <KeyboardArrowRightIcon
-            sx={{
-              position: "relative",
-              transition: "transform .2s ease",
-              transformOrigin: "center",
-              transform: `rotate(${open ? "90deg" : "0deg"})`,
-            }}
-          />
-        }
+        endIcon={<KeyboardArrowRightIconCustomized open={open} />}
         onClick={handleToggle}
       >
         <Typography
@@ -155,7 +102,7 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
         >
           {activeApp?.title || ""}
         </Typography>
-      </Button>
+      </AppSwitcherButtomCustomized>
       <Popper
         open={open}
         anchorEl={anchorRef.current}
@@ -186,7 +133,7 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
                       if (!hideSelected) return true;
                       else return app?.title !== activeApp?.title;
                     })
-                    .map((app, index) => (
+                    .map((app) => (
                       <Link
                         href={app.url}
                         key={app.title}
@@ -202,6 +149,7 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
                                 sx={{ mb: 1 }}
                               >
                                 <Typography
+                                  data-testid="app-title"
                                   variant="text16"
                                   sx={{
                                     fontFamily: FONT_FACES.geomanist.book,
@@ -215,10 +163,12 @@ const AppSwitcher: React.FC<IAppSwitcher> = ({ appOptions, hideSelected }) => {
                                 )}
                               </Stack>
                               <Typography
+                                data-testid="app-description"
                                 variant="text12"
                                 sx={{
-                                  color: darkGray && darkGray["50"],
+                                  color: darkGray["50"],
                                   whiteSpace: "normal",
+                                  textAlign: "left",
                                 }}
                               >
                                 {app.description}

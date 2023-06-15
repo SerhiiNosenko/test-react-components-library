@@ -1,4 +1,4 @@
-import { IAppSwitcher } from "../App-Switcher";
+import { IAppSwitcher } from "../App-Switcher.types";
 
 export const DEFAULT_PROPS: IAppSwitcher = {
   appOptions: [
